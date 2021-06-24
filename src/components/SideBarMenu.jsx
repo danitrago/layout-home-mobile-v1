@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import LogoImg from "../assets/logo.png";
 import FlagImg from "../assets/flag.png";
 import styled from "styled-components";
@@ -13,6 +13,7 @@ const StyledSideBar = styled.div`
   background-color: white;
   width: 100vw;
   height: 100vh;
+  box-shadow: 0 0 40px #00000020;
   .header {
     background-color: white;
     display: flex;
@@ -45,11 +46,23 @@ const options = [
   "Contáctanos",
 ];
 
-const SideBarMenu = () => {
+const SideBarMenu = (props) => {
+  const btnClose = useRef();
+
+  const closeMenu = () => {
+    btnClose.current.classList.add("animate__rotateOutUpLeft");
+    setTimeout(() => {
+      props.setShowMenu(false);
+    }, 800);
+  };
+
   return (
-    <StyledSideBar>
+    <StyledSideBar
+      ref={btnClose}
+      className="animate__animated animate__rotateInDownLeft animate__faster"
+    >
       <div className="header">
-        <div className="icon">
+        <div className="icon" onClick={closeMenu}>
           <i className="fa fa-times"></i>
         </div>
         <div className="logo">

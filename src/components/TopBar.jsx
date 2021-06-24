@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import LogoImg from "../assets/logo.png";
 import FlagImg from "../assets/flag.png";
 import SideBarMenu from "./SideBarMenu";
-
 
 const StyledTopBar = styled.div`
   background-color: white;
@@ -36,11 +35,18 @@ const StyledTopBar = styled.div`
 `;
 
 const TopBar = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
   return (
     <>
       <StyledTopBar>
         <div className="left">
-          <div className="bars">
+          <div
+            className="bars"
+            onClick={() => {
+              setShowMenu(true);
+            }}
+          >
             <i className="fa fa-bars"></i>
           </div>
           <div className="logo">
@@ -54,8 +60,7 @@ const TopBar = () => {
           <div className="flag"></div>
         </div>
       </StyledTopBar>
-      <SideBarMenu />
-      
+      {showMenu && <SideBarMenu {...{ showMenu, setShowMenu }} />}
     </>
   );
 };
