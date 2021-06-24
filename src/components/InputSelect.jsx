@@ -9,7 +9,7 @@ const InputSelect = (props) => {
       <select className="custom-input">
         <option value="">Ciudad, Aeropuerto o Ciudad</option>
         {props.options.map((option) => (
-          <option value={option}>{option}</option>
+          <option key={option} value={option}>{option}</option>
         ))}
       </select>
     </StyledInput>

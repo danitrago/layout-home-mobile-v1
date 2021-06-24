@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import LogoImg from "../assets/logo.png";
 import FlagImg from "../assets/flag.png";
+import SideBarMenu from "./SideBarMenu";
+
 
 const StyledTopBar = styled.div`
   background-color: white;
@@ -14,7 +16,7 @@ const StyledTopBar = styled.div`
     display: flex;
     align-items: center;
     .logo {
-      margin-left: 1rem;
+      margin-left: 1.3rem;
       &__image {
         max-height: 30px;
       }
@@ -25,17 +27,17 @@ const StyledTopBar = styled.div`
     margin-right: 1rem;
   }
   .flag {
-      background-image: url("${FlagImg}");
-      background-size: 100%;
-      width: 20px;
-      height: 20px;
-      border-radius: 99px;
+    background-image: url("${FlagImg}");
+    background-size: 100%;
+    width: 20px;
+    height: 20px;
+    border-radius: 99px;
   }
 `;
 
 const TopBar = () => {
   return (
-    <div>
+    <>
       <StyledTopBar>
         <div className="left">
           <div className="bars">
@@ -52,7 +54,9 @@ const TopBar = () => {
           <div className="flag"></div>
         </div>
       </StyledTopBar>
-    </div>
+      <SideBarMenu />
+      
+    </>
   );
 };
 
